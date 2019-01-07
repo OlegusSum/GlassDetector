@@ -50,18 +50,21 @@ if __name__ == '__main__':
 
     for n in range(0, len(onlyfiles)):
 
-        fileName = join(iamgesPath,onlyfiles[n])
-        image = Image.open(fileName)
-        print(onlyfiles[n])
+        try:
+            fileName = join(iamgesPath,onlyfiles[n])
+            image = Image.open(fileName)
+            print(onlyfiles[n])
 
-        print('proceeded ' + str(n) + ' images, ' + str(len(onlyfiles) - n) + ' left to go.')
+            print('proceeded ' + str(n) + ' images, ' + str(len(onlyfiles) - n) + ' left to go.')
 
-        pil_image, classes_name = model.detect_image(image)
-        addOnlyOnce = True
-        for name in classes_name:
-            if name == FLAGS.class_name and addOnlyOnce:
-                addOnlyOnce = False
-                detectedClassFilesName.append(fileName)
+            pil_image, classes_name = model.detect_image(image)
+            addOnlyOnce = True
+            for name in classes_name:
+                if name == FLAGS.class_name and addOnlyOnce:
+                    addOnlyOnce = False
+                    detectedClassFilesName.append(fileName)
+
+        except Exception as e: print(e)
 
     print("Images with Glasses:")
     for fileName in detectedClassFilesName:

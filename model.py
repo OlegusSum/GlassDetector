@@ -420,7 +420,7 @@ def yolo_loss(args, anchors, num_classes, ignore_thresh=.5, print_loss=False):
 
 class YOLO(object):
 	_defaults = {
-			"model_path": 'trainedModel/tiny_yolo_final.h5',
+			"model_path": 'trained_model/tiny_yolo_final.h5',
 			"anchors_path": 'model_data/tiny_yolo_anchors.txt',
 			"classes_path": 'model_data/myclasses.txt',
 			"score" : 0.3,
